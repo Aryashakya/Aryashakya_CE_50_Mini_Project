@@ -11,18 +11,7 @@ public:
     Node(int info, Node *next) : info(info), next(next) {}
 };
 
-class Queue
-{
-public:
-    virtual void enqueue(int data) = 0;
-    virtual int dequeue() = 0;
-    virtual int front() = 0;
-    virtual int rear() = 0;
-    virtual void traverse() = 0;
-    virtual bool isEmpty() = 0;
-};
-
-class LinkedListQueue : public Queue
+class LinkedListQueue
 {
 public:
     void enqueue(int data);
@@ -31,8 +20,11 @@ public:
     int rear();
     void traverse();
     bool isEmpty();
+    bool isFull();
+    int maxQueueSize;
 
 private:
+    int count;
     Node *q = nullptr;
 };
 
