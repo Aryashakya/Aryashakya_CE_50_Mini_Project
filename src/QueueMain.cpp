@@ -5,7 +5,7 @@
 int main()
 {
 
-    new LinkedListQueue() ;
+    LinkedListQueue Queue;
     int choice, max, element, front, rear;
     try
     {
