@@ -1,16 +1,19 @@
 #include <iostream>
 #include "LinkedList.h"
 
+//Linked List constructor
 LinkedList::LinkedList()
 {
     TAIL = nullptr;
 }
 
+//Checks if the list is empty
 bool LinkedList::isEmpty()
 {
     return TAIL == nullptr;
 }
 
+//Traverses the list
 void LinkedList::traverse(char separator)
 {
     if (this->isEmpty())
@@ -32,6 +35,7 @@ void LinkedList::traverse(char separator)
     }
 }
 
+//Removes the first node from the list
 int LinkedList::removeFromHead()
 {
     if (!this->isEmpty())
@@ -60,6 +64,7 @@ int LinkedList::removeFromHead()
     }
 }
 
+//Inserts a node at the end of the list
 void LinkedList::addToTail(int data)
 {
     if (this->isEmpty())
@@ -80,6 +85,7 @@ void LinkedList::addToTail(int data)
     }
 }
 
+//Returns the data stored at the tail of the list
 int LinkedList::getTail()
 {
     if (TAIL != nullptr)
@@ -92,6 +98,7 @@ int LinkedList::getTail()
     }
 }
 
+//Returns the data stored at the head of the list
 int LinkedList::getHead()
 {
     if (TAIL->next != nullptr)

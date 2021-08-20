@@ -6,13 +6,15 @@ int main()
 {
 
     LinkedListQueue Queue;
-    int choice, max, element, front, rear;
+    int choice, element, front, rear;
     try
     {
+        //Ask the user for size of queue
         std::cout << "Enter size of queue: ";
         std::cin >> Queue.maxQueueSize;
         do
         {
+            //Ask the user for choice
             std::cout << "\nChoose one of the following: " << std::endl;
             std::cout << " 1. Enqueue " << std::endl;
             std::cout << " 2. Dequeue " << std::endl;
@@ -26,6 +28,7 @@ int main()
             switch (choice)
             {
             case 1:
+                //Enqueue
                 if (!Queue.isFull())
                 {
                     std::cout << "Enter element to be enqueued: ";
@@ -41,7 +44,7 @@ int main()
                 break;
 
             case 2:
-
+                //Dequeue
                 if (!Queue.isEmpty())
                 {
                     element = Queue.dequeue();
@@ -54,11 +57,12 @@ int main()
                 break;
 
             case 3:
-
+                //Traverse
                 Queue.traverse();
                 break;
 
             case 4:
+                //Front
                 if (!Queue.isEmpty())
                 {
                     front = Queue.front();
@@ -71,6 +75,7 @@ int main()
                 break;
 
             case 5:
+                //Rear
                 if (!Queue.isEmpty())
                 {
                     rear = Queue.rear();
@@ -83,9 +88,11 @@ int main()
                 break;
 
             case 6:
+                //Exit
                 break;
 
             default:
+                //Invalid choice
                 std::cout << "Invalid choice" << std::endl;
                 break;
             }
@@ -93,6 +100,7 @@ int main()
     }
     catch (const char *message)
     {
+        //Display error message
         std::cout << message << '\n';
     }
 }
