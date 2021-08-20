@@ -3,13 +3,12 @@
 
 LinkedList::LinkedList()
 {
-    HEAD = nullptr;
     TAIL = nullptr;
 }
 
 bool LinkedList::isEmpty()
 {
-    return HEAD == nullptr && TAIL == nullptr;
+    return TAIL == nullptr;
 }
 
 void LinkedList::traverse(char separator)
@@ -20,14 +19,14 @@ void LinkedList::traverse(char separator)
     }
     else
     {
-        Node *temp = HEAD;
+        Node *temp = TAIL->next;
         if (temp != nullptr)
         {
             do
             {
                 std::cout << temp->info << separator;
                 temp = temp->next;
-            } while (temp != HEAD);
+            } while (temp != TAIL->next);
             std::cout << std::endl;
         }
     }
@@ -38,18 +37,18 @@ int LinkedList::removeFromHead()
     if (!this->isEmpty())
     {
         int data;
-        data = HEAD->info;
+        data = TAIL->next->info;
 
-        if (HEAD->next == HEAD)
+        if (TAIL->next->next == TAIL->next)
         {
-            HEAD = nullptr;
+            TAIL->next = nullptr;
             TAIL = nullptr;
         }
         else
         {
-            Node *temp = HEAD;
-            HEAD = temp->next;
-            TAIL->next = HEAD;
+            Node *temp = TAIL->next;
+            TAIL->next = temp->next;
+            TAIL->next = TAIL->next;
             delete temp;
         }
 
@@ -69,7 +68,7 @@ void LinkedList::addToTail(int data)
         temp->info = data;
         temp->next = temp;
         TAIL = temp;
-        HEAD = temp;
+        TAIL->next= temp;
     }
     else
     {
@@ -95,9 +94,9 @@ int LinkedList::getTail()
 
 int LinkedList::getHead()
 {
-    if (HEAD != nullptr)
+    if (TAIL->next != nullptr)
     {
-        return HEAD->info;
+        return TAIL->next->info;
     }
     else
     {
