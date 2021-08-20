@@ -42,13 +42,11 @@ int LinkedList::removeFromHead()
 
         if (HEAD->next == HEAD)
         {
-            std::cout << "dty\n";
             HEAD = nullptr;
             TAIL = nullptr;
         }
         else
         {
-            std::cout << "dddty\n";
             Node *temp = HEAD;
             HEAD = temp->next;
             TAIL->next = HEAD;

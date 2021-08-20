@@ -5,7 +5,7 @@
 int main()
 {
 
-    LinkedListQueue Queue;
+    new LinkedListQueue() ;
     int choice, max, element, front, rear;
     try
     {
@@ -13,8 +13,6 @@ int main()
         std::cin >> Queue.maxQueueSize;
         do
         {
-            std::cout << "\nFull: " << Queue.isFull() << std::endl;
-            std::cout << "Empty: " << Queue.isEmpty() << std::endl;
             std::cout << "\nChoose one of the following: " << std::endl;
             std::cout << " 1. Enqueue " << std::endl;
             std::cout << " 2. Dequeue " << std::endl;
@@ -38,26 +36,50 @@ int main()
                 else
                 {
 
-                    std::cout << "\nQueue is full" << std::endl;
+                    std::cout << "\nCannot add \nQueue is full" << std::endl;
                 }
                 break;
+
             case 2:
-                element = Queue.dequeue();
-                std::cout << "Dequeued element: " << element << std::endl;
+
+                if (!Queue.isEmpty())
+                {
+                    element = Queue.dequeue();
+                    std::cout << "Dequeued element: " << element << std::endl;
+                }
+                else
+                {
+                    std::cout << "\nCannot remove\nQueue is empty" << std::endl;
+                }
                 break;
 
             case 3:
+
                 Queue.traverse();
                 break;
 
             case 4:
-                front = Queue.front();
-                std::cout << "Front element: " << front << std::endl;
+                if (!Queue.isEmpty())
+                {
+                    front = Queue.front();
+                    std::cout << "Front element: " << front << std::endl;
+                }
+                else
+                {
+                    std::cout << "\nQueue is empty" << std::endl;
+                }
                 break;
 
             case 5:
-                rear = Queue.rear();
-                std::cout << "Rear element: " << rear << std::endl;
+                if (!Queue.isEmpty())
+                {
+                    rear = Queue.rear();
+                    std::cout << "Rear element: " << rear << std::endl;
+                }
+                else
+                {
+                    std::cout << "\nQueue is empty" << std::endl;
+                }
                 break;
 
             case 6:
