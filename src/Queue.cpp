@@ -1,104 +1,52 @@
 #include "Queue.h"
+#include "LinkedList.h"
 #include <iostream>
 
 void LinkedListQueue::enqueue(int data)
 {
-    Node *newNode = new Node();
-    newNode->info = data;
-    if (this->isEmpty())
+    if (!this->isFull())
     {
-        q = newNode;
-        count++;
-    }
-    else if (!this->isFull())
-    {
-        newNode->next = q->next;
+        list.addToTail(data);
         count++;
     }
     else if (this->isFull())
     {
-        throw "Queue is full";
+        std::cout << "\nQueue is Full\n";
     }
-
-    q->next = newNode;
-    q = newNode;
 }
 
 int LinkedListQueue::dequeue()
 {
-    Node *top;
-    int data;
-    if (this->isEmpty())
+    if (!this->isEmpty())
     {
-        throw "Queue is empty";
+        int a = list.removeFromHead();
+        count--;
+        return a;
     }
     else
     {
-        top = q->next;
-        data = top->info;
-        if (top == q)
-        {
-            q = nullptr;
-            count--;
-        }
-        else
-        {
-            q->next = top->next;
-            count--;
-        }
-        delete top;
-        return data;
+        throw "\nQueue is empty\n";
     }
 }
 
 int LinkedListQueue::front()
 {
-    if (!this->isEmpty())
-    {
-        return q->next->info;
-    }
-    else
-    {
-        throw "Queue is empty";
-    }
+    return list.getHead();
 }
 
 int LinkedListQueue::rear()
 {
-    if (!this->isEmpty())
-    {
-        return q->info;
-    }
-    else
-    {
-        throw "Queue is empty";
-    }
+    return list.getTail();
 }
 
 void LinkedListQueue::traverse()
 {
-    if (this->isEmpty())
-    {
-        std::cout << "List is Empty\n";
-    }
-    else
-    {
-        Node *top = q->next;
-        if (top != nullptr)
-        {
-            do
-            {
-                std::cout << top->info << "  ";
-                top = top->next;
-            } while (top != q->next);
-            std::cout << std::endl;
-        }
-    }
+    list.traverse();
 }
 
 bool LinkedListQueue::isEmpty()
 {
-    return q == nullptr;
+    return list.isEmpty();
 }
 
 bool LinkedListQueue::isFull()

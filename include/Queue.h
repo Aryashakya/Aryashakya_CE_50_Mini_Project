@@ -1,19 +1,23 @@
 #ifndef Queue_h
 #define Queue_h
+#include "LinkedList.h"
 
-class Node
+class Queue
 {
 public:
-    int info;
-    Node *next;
-
-    Node() : next(nullptr) {}
-    Node(int info, Node *next) : info(info), next(next) {}
+    virtual void enqueue(int data) = 0;
+    virtual int dequeue() = 0;
+    virtual int front() = 0;
+    virtual int rear() = 0;
+    virtual void traverse() = 0;
+    virtual bool isEmpty() = 0;
+    virtual bool isFull() = 0;
 };
 
-class LinkedListQueue
+class LinkedListQueue : public Queue
 {
 public:
+    LinkedListQueue() {}
     void enqueue(int data);
     int dequeue();
     int front();
@@ -22,10 +26,10 @@ public:
     bool isEmpty();
     bool isFull();
     int maxQueueSize;
+    int count;
 
 private:
-    int count;
-    Node *q = nullptr;
+    LinkedList list;
 };
 
 #endif
